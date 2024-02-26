@@ -92,6 +92,16 @@ libpng-dev && \
 # Insure an SSL directory exists
 RUN mkdir -p /etc/apache2/ssl
 
+# Adjust Apache document root to point to the public directory
+#ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+#RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+#RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+# Optionally, set permissions on the public directory
+#RUN chown -R www-data:www-data /var/www/html/public
+RUN chmod -R 755 /var/www/html
+
+
 # Enable SSL support
 RUN a2enmod ssl && a2enmod rewrite
 

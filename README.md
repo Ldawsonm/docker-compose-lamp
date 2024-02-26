@@ -39,8 +39,6 @@ As of now, we have several different PHP versions. Use appropriate php version a
 - Run the installer, keeping in mind where the php binaries were installed
 - Once the installer is finished, restart your computer
 
-Composer for this project is located in the www/ directory, so make sure that is your working directory before using it
-
 #### macOS
 
 - Install homebrew: https://brew.sh/
@@ -67,8 +65,6 @@ sudo apt-get install php
 ```shell
 git clone https://github.com/sprintcube/docker-compose-lamp.git
 cd docker-compose-lamp/
-cp sample.env .env
-// modify sample.env as needed
 docker compose up -d
 // visit localhost
 ```
