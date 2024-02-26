@@ -1,0 +1,9 @@
+{
+    "name": "ldmar/www",
+    "autoload": {
+        "psr-4": {
+            "Ldmar\\Www\\": "src/"
+        }
+    },
+    "require": {}
+}

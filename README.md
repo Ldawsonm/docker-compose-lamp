@@ -23,6 +23,41 @@ As of now, we have several different PHP versions. Use appropriate php version a
 - 8.2.x
 - 8.3.x
 
+## Development Environment (Local Desktop)
+
+- Get Docker: https://www.docker.com/products/docker-desktop/
+- (Optional) Get Github Desktop: https://desktop.github.com/
+
+### Dependency Management
+
+#### Windows
+
+- Download PHP binaries zip file: https://windows.php.net/download/
+- Create a folder somewhere (e.g. C:\) and name it php
+- Extract the contents of the zip file into this folder (C:\php\)
+- Download Composer: https://getcomposer.org/download/
+- Run the installer, keeping in mind where the php binaries were installed
+- Once the installer is finished, restart your computer
+
+Composer for this project is located in the www/ directory, so make sure that is your working directory before using it
+
+#### macOS
+
+- Install homebrew: https://brew.sh/
+- In the command line, run:
+```shell
+brew install php
+```
+- Follow command line instructions here: https://getcomposer.org/download/
+
+#### Linux
+
+- In the command line, run:
+```shell
+sudo apt-get install php
+```
+- follow command line instructions here: https://getcomposer.org/download/
+
 ## Installation
 
 - Clone this repository on your local computer
@@ -39,6 +74,8 @@ docker compose up -d
 ```
 
 Your LAMP stack is now ready!! You can access it via `http://localhost`.
+
+
 
 ## Configuration and Usage
 
