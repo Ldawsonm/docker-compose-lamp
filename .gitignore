@@ -1,5 +1,5 @@
 /.vscode
-/data/**
 /logs/*
 .DS_Store
 /buildtest
+data/mysql/mysql.sock
