@@ -7,7 +7,8 @@
         }
     },
     "require": {
-        "drupal/recommended-project": "^10.2"
+        "drupal/recommended-project": "^10.2",
+        "drush/drush": "^12.4"
     },
     "config": {
         "allow-plugins": {

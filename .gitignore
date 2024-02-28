@@ -3,3 +3,6 @@
 /logs/*
 .DS_Store
 /buildtest
+!data/*.frm
+!data/mysql/*.ibd
+!/data/mysql/binlog.*
