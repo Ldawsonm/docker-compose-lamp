@@ -5,5 +5,14 @@
             "Ldmar\\Www\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "drupal/recommended-project": "^10.2"
+    },
+    "config": {
+        "allow-plugins": {
+            "drupal/core-project-message": true,
+            "drupal/core-composer-scaffold": true,
+            "composer/installers": true
+        }
+    }
 }
