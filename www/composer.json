@@ -6,7 +6,8 @@
         }
     },
     "require": {
-        "drupal/recommended-project": "^10.2"
+        "drupal/recommended-project": "^10.2",
+        "drupal/devel": "^5.1"
     },
     "config": {
         "allow-plugins": {

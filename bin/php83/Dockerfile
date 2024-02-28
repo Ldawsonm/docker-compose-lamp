@@ -35,6 +35,8 @@ openssl && \
     rm -rf /var/lib/apt/lists/* && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+#RUN apt-get install libapache2-mod-fcgid
+
 # Install xdebug
 RUN pecl install xdebug-3.3.1 && \
     docker-php-ext-enable xdebug && \
@@ -77,7 +79,9 @@ RUN docker-php-ext-install pdo_mysql && \
     docker-php-ext-install mbstring && \
     docker-php-ext-install gettext && \
     docker-php-ext-install calendar && \
-    docker-php-ext-install exif
+    docker-php-ext-install exif && \
+    docker-php-ext-install opcache   
+#RUN docker-php-ext-install fpm
 
 
 # Install Freetype 
@@ -107,6 +111,8 @@ RUN a2enmod ssl && a2enmod rewrite
 
 # Enable apache modules
 RUN a2enmod rewrite headers
+
+RUN a2enmod proxy_fcgi
 
 # Cleanup
 RUN rm -rf /usr/src/*

@@ -2,6 +2,11 @@ version: "3"
 
 services:
   webserver:
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 1024M
     build:
       context: ./bin/${PHPVERSION}
     container_name: "${COMPOSE_PROJECT_NAME}-${PHPVERSION}"
