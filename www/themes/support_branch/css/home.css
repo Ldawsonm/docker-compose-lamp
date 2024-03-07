@@ -1,0 +1,83 @@
+/**
+ * css for banner
+ * */
+body {
+    overflow: hidden;
+}
+
+.background_div {
+    position: absolute;
+    transform: translateZ(-10px);
+    top: 0vh;
+    left: 0vw;
+    width: 100vw;
+    z-index: 1;
+}
+
+.midground_div {
+    position: absolute;
+    transform: translateZ(10px);
+    top: 0vh;
+    left: 0vw;
+    width: 100vw;
+    z-index: 2;
+}
+
+.banner_div {
+    position: fixed;
+    width: 100vw;
+    height: 10vh;
+    opacity: 0.80;
+    background: #DDDEBE;
+    top: 0vh;
+    left: 0vw;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+    overflow-y: hidden;
+    transition: all 0.75s ease-in-out;
+}
+
+.banner_div:hover {
+    cursor: pointer;
+}
+
+.banner_text {
+    position: absolute;
+    top: 10vh;
+    width: 100vw;
+    text-align: center;
+    color: black;
+    font-family: Calibri;
+    font-weight: 600;
+    word-wrap: break-word;
+    z-index: 3;
+}
+
+.banner_text p {
+    padding-left: 3vw;
+    padding-right: 3vw;
+}
+
+.background {
+    position: absolute;
+    width: 100vw;
+    top: 0vh
+}
+
+.back_scene {
+    position: absolute;
+    width: 100vw;
+    top: 0vh;
+}
+
+.midground {
+    position: absolute;
+    width: 100vw;
+    top: 47vh;
+}
+
+.foreground {
+    position: absolute;
+    width: 100vw;
+    top: 280vh;
+}

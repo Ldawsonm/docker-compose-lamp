@@ -1,0 +1,22 @@
+name: support_branch
+type: theme
+'base theme': stable9
+starterkit: true
+version: VERSION
+libraries:
+  - support_branch/base
+  - support_branch/messages
+  - core/normalize
+libraries-extend:
+  user/drupal.user:
+    - support_branch/user
+  core/drupal.dropbutton:
+    - support_branch/dropbutton
+  core/drupal.dialog:
+    - support_branch/dialog
+  file/drupal.file:
+    - support_branch/file
+  core/drupal.progress:
+    - support_branch/progress
+core_version_requirement: ^10
+generator: 'starterkit_theme:10.2.3'
