@@ -1,75 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>LAMP STACK</title>
-        <link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/svg+xml">
-        <link rel="stylesheet" href="/assets/css/bulma.min.css">
-    </head>
-    <body>
-        <section class="hero is-medium is-info is-bold">
-            <div class="hero-body">
-                <div class="container has-text-centered">
-                    <h1 class="title">
-                        LAMP STACK
-                    </h1>
-                    <h2 class="subtitle">
-                        Your local development environment
-                    </h2>
-                </div>
-            </div>
-        </section>
-        <section class="section">
-            <div class="container">
-                <div class="columns">
-                    <div class="column">
-                        <h3 class="title is-3 has-text-centered">Environment</h3>
-                        <hr>
-                        <div class="content">
-                            <ul>
-                                <li><?= apache_get_version(); ?></li>
-                                <li>PHP <?= phpversion(); ?></li>
-                                <li>
-                                    <?php
-                                    $link = mysqli_connect("database", "root", $_ENV['MYSQL_ROOT_PASSWORD'], null);
+<?php
 
-/* check connection */
-                                    if (mysqli_connect_errno()) {
-                                        printf("MySQL connecttion failed: %s", mysqli_connect_error());
-                                    } else {
-                                        /* print server version */
-                                        printf("MySQL Server %s", mysqli_get_server_info($link));
-                                    }
-                                    /* close connection */
-                                    mysqli_close($link);
-                                    ?>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <h3 class="title is-3 has-text-centered">Quick Links</h3>
-                        <hr>
-                        <div class="content">
-                            <ul>
-                                <li><a href="/phpinfo.php">phpinfo()</a></li>
-                                <li><a href="http://localhost:<? print $_ENV['PMA_PORT']; ?>">phpMyAdmin</a></li>
-                                <li><a href="/test_db.php">Test DB Connection with mysqli</a></li>
-                                <li><a href="/test_db_pdo.php">Test DB Connection with PDO</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer class="footer">
-            <div class="content has-text-centered">
-                <p>
-                    <strong><a href="https://www.sprintcube.com" target="_blank">SprintCube</a></strong><br>
-                    The source code is released under the <a href="https://github.com/sprintcube/docker-compose-lamp/blob/master/LICENSE" target="_blank">MIT license</a>.
-                </p>
-            </div>
-        </footer>
-    </body>
-</html>
+use Illuminate\Contracts\Http\Kernel;
+use Illuminate\Http\Request;
+
+define('LARAVEL_START', microtime(true));
+
+/*
+|--------------------------------------------------------------------------
+| Check If The Application Is Under Maintenance
+|--------------------------------------------------------------------------
+|
+| If the application is in maintenance / demo mode via the "down" command
+| we will load this file so that any pre-rendered content can be shown
+| instead of starting the framework, which could cause an exception.
+|
+*/
+
+if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+    require $maintenance;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader for
+| this application. We just need to utilize it! We'll simply require it
+| into the script here so we don't need to manually load our classes.
+|
+*/
+
+require __DIR__.'/../vendor/autoload.php';
+
+/*
+|--------------------------------------------------------------------------
+| Run The Application
+|--------------------------------------------------------------------------
+|
+| Once we have the application, we can handle the incoming request using
+| the application's HTTP kernel. Then, we will send the response back
+| to this client's browser, allowing them to enjoy our application.
+|
+*/
+
+$app = require_once __DIR__.'/../bootstrap/app.php';
+
+$kernel = $app->make(Kernel::class);
+
+$response = $kernel->handle(
+    $request = Request::capture()
+)->send();
+
+$kernel->terminate($request, $response);
