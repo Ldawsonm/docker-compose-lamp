@@ -99,7 +99,7 @@ RUN mkdir -p /etc/apache2/ssl
 
 # Optionally, set permissions on the public directory
 #RUN chown -R www-data:www-data /var/www/html/public
-RUN chmod -R 755 /var/www/html
+#RUN chmod -R 755 /var/www/html
 
 
 # Enable SSL support

@@ -1,0 +1,20 @@
+/**
+ * css for badges
+ * */
+.badge_div {
+    position: absolute;
+    transform: translate(-50%, 50%);
+    z-index: 3;
+}
+
+.badge {
+    z-index: 4;
+    bottom: 0px;
+    height: 200px;
+    width: 200px;
+}
+
+.badge:hover {
+    cursor: pointer;
+}
+
