@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdventureController;
 use App\Http\Controllers\ModuleController; // Adjust if in a subdirectory
 
 use Illuminate\Support\Facades\Route;
@@ -21,8 +22,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home');
+Route::get('/dashboard', function () {
+    return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -31,8 +32,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/adventure/{moduleId}', [ModuleController::class, 'viewModule'])->name('module.view');
+Route::get('/module/{moduleId}', [ModuleController::class, 'viewModule'])->name('module.view');
 
-//Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+
+Route::get('/adventure/create', [AdventureController::class, 'create'])->name('adventure.create');
+Route::post('/adventure/store', [AdventureController::class, 'store'])->name('adventure.store');
 
 require __DIR__.'/auth.php';
