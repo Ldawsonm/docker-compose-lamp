@@ -9,6 +9,12 @@ use Illuminate\Validation\Rule;
 
 class AdventureController extends Controller
 {
+    public function index()
+    {
+        $adventures = Adventure::all();
+        return view('adventure.index', compact('adventures'));
+    }
+
     public function create()
     {
         return view('adventure.create');
@@ -56,6 +62,15 @@ class AdventureController extends Controller
         }
 
         return redirect()->route('adventure.create')->with('success', 'Adventure created successfully!');
+    }
+
+    public function destroy($id)
+    {
+        //echo "deleting adventure" . $id;
+        $adventure = Adventure::findOrFail($id);
+        $adventure->delete();
+
+        return redirect()->route('adventure.index')->with('success', 'Adventure deleted successfully');
     }
 
 }

@@ -38,5 +38,9 @@ Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware(
 
 Route::get('/adventure/create', [AdventureController::class, 'create'])->name('adventure.create');
 Route::post('/adventure/store', [AdventureController::class, 'store'])->name('adventure.store');
+Route::get('/adventures', [AdventureController::class, 'index'])->name('adventure.index');
+Route::delete('/adventure/{adventure}', [AdventureController::class, 'destroy'])->name('adventure.destroy');
+
+
 
 require __DIR__.'/auth.php';
