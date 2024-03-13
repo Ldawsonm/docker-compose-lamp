@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Prompt extends Model
 {
     use HasFactory;
-    protected $fillable = ['text', 'type', 'slide_id'];
+    protected $fillable = ['text', 'type', 'slide_id', 'order'];
     // Inside Prompt model
     public  function adventure()
     {

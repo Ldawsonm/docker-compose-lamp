@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('prompt_options', function (Blueprint $table) {
             $table->id();
             $table->foreignId('prompt_id')->constrained()->onDelete('cascade');
+            $table->integer('order');
             $table->longText('text');
             $table->boolean('is_correct')->default(false);
             $table->longText('correct_answer_text')->nullable();

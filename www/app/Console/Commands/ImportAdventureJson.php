@@ -65,14 +65,17 @@ class ImportAdventureJson extends Command
                 $prompt = $slide->prompts()->create([
                     'text' => $promptData->text,
                     'type' => $promptData->type,
+                    'order' => $promptIndex++,
                 ]);
 
+                $optionIndex = 0;
                 if (isset($promptData->options) && !empty($promptData->options)) {
                     foreach ($promptData->options as $optionData) {
                         $prompt->promptOptions()->create([
                             'text' => $optionData->text,
                             'is_correct' => $optionData->is_correct,
                             'correct_answer_text' => $optionData->correct_answer_text ?? null,
+                            'order' => $optionIndex,
                         ]);
                     }
                 }

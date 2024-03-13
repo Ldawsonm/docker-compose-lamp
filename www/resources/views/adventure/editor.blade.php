@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.template')
 
 @if(isset($adventure))
     @section('title', 'Adventure Editor')
