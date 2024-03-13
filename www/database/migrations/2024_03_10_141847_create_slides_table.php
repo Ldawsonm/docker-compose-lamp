@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('adventures', function (Blueprint $table) {
+        Schema::create('slides', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->longText('description');
+            $table->foreignId('adventure_id')->constrained()->onDelete('cascade');
+            $table->string('title');
+            $table->longText('content');
+            $table->integer('order');
             $table->timestamps();
         });
+        
     }
 
     /**
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('adventures');
+        Schema::dropIfExists('slides');
     }
 };

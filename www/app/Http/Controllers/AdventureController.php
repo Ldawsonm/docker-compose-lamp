@@ -73,5 +73,56 @@ class AdventureController extends Controller
         return redirect()->route('adventure.index')->with('success', 'Adventure deleted successfully');
     }
 
+    public function edit($id)
+    {
+        $adventure = Adventure::findOrFail($id);
+        $adventure->load('prompts');
+        return view('adventure.edit', compact('adventure'));
+    }
+
+    public function update(Request $request, Adventure $adventure)
+    {
+        $validatedData = $request->validate([
+            'adventure_name' => 'required|string|max:255',
+            'order' => 'required|integer',
+            'prompts.*.text' => 'required|string|max:255',
+            'prompts.*.type' => ['required', Rule::in(['FREE_RESPONSE', 'FREE_SELECT', 'MULTIPLE_CHOICE'])],
+            'prompts.*.options.*' => 'sometimes|required|string|max:255',
+        ]);
+
+        $adventure->update([
+            'adventure_name' => $validatedData['adventure_name'],
+            'order' => $validatedData['order'],
+        ]);
+
+        // Update prompts logic
+        foreach ($validatedData['prompts'] as $index => $promptData) {
+            $prompt = $adventure->prompts()->find($index);
+            if ($prompt) {
+                $prompt->update([
+                    'prompt_text' => $promptData['text'],
+                    'prompt_type' => $promptData['type'],
+                    'options' => json_encode($promptData['options'] ?? []),
+                ]);
+            } else {
+                // Handle new prompts if any
+                $adventure->prompts()->create([
+                    'prompt_text' => $promptData['text'],
+                    'prompt_type' => $promptData['type'],
+                    'options' => json_encode($promptData['options'] ?? []),
+                ]);
+            }
+        }
+
+        return redirect()->route('adventures.index')->with('success', 'Adventure updated successfully!');
+    }
+
+
+    public function editor(Adventure $adventure)
+    {
+        $slides = $adventure->slides()->orderBy('order')->get();
+        return view('adventures.editor', compact('adventure', 'slides'));
+    }
+
 }
 

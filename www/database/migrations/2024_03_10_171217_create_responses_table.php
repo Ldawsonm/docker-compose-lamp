@@ -15,11 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('prompt_id')->constrained()->onDelete('cascade');
-            $table->foreignId('adventure_id')->constrained()->onDelete('cascade');
-            $table->integer('multiple_choice_response')->nullable();
-            $table->json('free_select_response')->nullable();
-            $table->longText('free_response_response')->nullable();
-            $table->dateTime('submitted_at');
+            $table->foreignId('prompt_option_id')->constrained()->onDelete('cascade')->nullable();
+            $table->longText('text')->nullable();
             $table->timestamps();
         });
     }

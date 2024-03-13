@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdventureController;
+use App\Http\Controllers\SlideController;
 use App\Http\Controllers\ModuleController; // Adjust if in a subdirectory
 
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,21 @@ Route::get('/adventure/create', [AdventureController::class, 'create'])->name('a
 Route::post('/adventure/store', [AdventureController::class, 'store'])->name('adventure.store');
 Route::get('/adventures', [AdventureController::class, 'index'])->name('adventure.index');
 Route::delete('/adventure/{adventure}', [AdventureController::class, 'destroy'])->name('adventure.destroy');
+//Route::get('/adventure/{adventure}/edit', [AdventureController::class, 'edit'])->name('adventures.edit');
+//Route::put('/adventure/{adventure}', [AdventureController::class, 'update'])->name('adventures.update');
+
+Route::resource('slides', SlideController::class);
+
+Route::get('/adventure/{adventure}/editor', [AdventureController::class, 'editor'])->name('adventure.editor');
+
+// Route to show the form for creating a new slide
+Route::get('/slides/create', [SlideController::class, 'create'])->name('slides.create');
+
+// Route to store the new slide
+Route::post('/slides', [SlideController::class, 'store'])->name('slides.store');
+
+// Route to delete a slide
+Route::delete('/slides/{slide}', [SlideController::class, 'destroy'])->name('slides.destroy');
 
 
 

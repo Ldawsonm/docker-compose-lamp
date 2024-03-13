@@ -1,0 +1,82 @@
+{
+    "name": "Jungle Escape",
+    "description": "An adventurous escape from a dense jungle full of puzzles.",
+    "slides": [
+      {
+        "title": "Slide 1",
+        "content": "Introduction to the jungle",
+        "prompts": [
+          {
+            "text": "Are you ready to start?",
+            "type": "FREE_RESPONSE"
+          },
+          {
+            "text": "Select A or B",
+            "type": "MULTIPLE_CHOICE",
+            "options": [
+                {
+                    "text": "A",
+                    "is_correct": false
+                },
+                {
+                    "text": "B",
+                    "is_correct": true,
+                    "is_correct_text": "B is the correct answer"
+                }
+            ]
+          },
+          {
+            "text": "Select the warm colors",
+            "type": "FREE_SELECT",
+            "options": [
+                {
+                    "text": "Red",
+                    "is_correct": true,
+                    "is_correct_text": "Red is a warm color"
+                },
+                {
+                    "text": "Yellow",
+                    "is_correct": true,
+                    "is_correct_text": "Yellow is a warm color"
+                },
+                {
+                    "text": "Green",
+                    "is_correct": false
+                }
+            ]
+          },
+          {
+            "text": "Select your favorite movie genres",
+            "type": "FREE_SELECT",
+            "options": [
+                {
+                    "text": "Action",
+                    "is_correct": false
+                },
+                {
+                    "text": "Drama",
+                    "is_correct": false
+                },
+                {
+                    "text": "Comedy",
+                    "is_correct": false
+                },
+                {
+                    "text": "Horror",
+                    "is_correct": false
+                },
+                {
+                    "text": "Mystery",
+                    "is_correct": false
+                },
+                {
+                    "text": "Thriller",
+                    "is_correct": false
+                }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

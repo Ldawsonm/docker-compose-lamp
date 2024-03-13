@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('prompts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('adventure_id')->constrained()->onDelete('cascade');
-            $table->longText('prompt_text');
-            $table->enum('prompt_type', ['FREE_RESPONSE', 'FREE_SELECT', 'MULTIPLE_CHOICE']);
-            $table->json('options');
+            $table->foreignId('slide_id')->constrained()->onDelete('cascade');
+            $table->longText('text');
+            $table->enum('type', ['FREE_RESPONSE', 'FREE_SELECT', 'MULTIPLE_CHOICE']);
             $table->timestamps();
         });
     }
