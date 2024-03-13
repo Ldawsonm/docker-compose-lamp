@@ -33,9 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/module/{moduleId}', [ModuleController::class, 'viewModule'])->name('module.view');
+//Route::get('/module/{moduleId}', [ModuleController::class, 'viewModule'])->name('module.view');
 
-Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+//Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
 Route::get('/adventure/create', [AdventureController::class, 'create'])->name('adventure.create');
 Route::post('/adventure/store', [AdventureController::class, 'store'])->name('adventure.store');

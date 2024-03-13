@@ -25,6 +25,7 @@ libicu-dev && \
     apt-get -y --no-install-recommends install --fix-missing apt-utils \
 build-essential \
 git \
+npm \
 curl \
 libonig-dev && \ 
     apt-get install -y iputils-ping && \
@@ -100,6 +101,7 @@ RUN mkdir -p /etc/apache2/ssl
 # Optionally, set permissions on the public directory
 #RUN chown -R www-data:www-data /var/www/html/public
 #RUN chmod -R 755 /var/www/html
+
 
 
 # Enable SSL support

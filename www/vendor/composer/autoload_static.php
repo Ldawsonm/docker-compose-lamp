@@ -611,6 +611,8 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
     );
 
     public static $classMap = array (
+        'App\\Console\\Commands\\DeleteAdventure' => __DIR__ . '/../..' . '/app/Console/Commands/DeleteAdventure.php',
+        'App\\Console\\Commands\\ImportAdventureJson' => __DIR__ . '/../..' . '/app/Console/Commands/ImportAdventureJson.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdventureController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdventureController.php',
