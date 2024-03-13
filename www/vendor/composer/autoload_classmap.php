@@ -6,6 +6,8 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Console\\Commands\\DeleteAdventure' => $baseDir . '/app/Console/Commands/DeleteAdventure.php',
+    'App\\Console\\Commands\\ImportAdventureJson' => $baseDir . '/app/Console/Commands/ImportAdventureJson.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AdventureController' => $baseDir . '/app/Http/Controllers/AdventureController.php',
