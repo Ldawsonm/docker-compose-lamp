@@ -27,6 +27,8 @@ class ImportAdventureJson extends Command
         $jsonData = json_decode(file_get_contents($filePath));
         $schema = json_decode(file_get_contents(database_path('schemas/adventureSchema.json')));
 
+        \Log::info('Loaded JSON Schema:', (array)$schema);
+
         $validator = new Validator();
         $validator->validate($jsonData, $schema);
 

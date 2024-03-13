@@ -21,7 +21,7 @@
                 {
                     "text": "B",
                     "is_correct": true,
-                    "is_correct_text": "B is the correct answer"
+                    "correct_answer_text": "B is the correct answer"
                 }
             ]
           },
@@ -32,12 +32,12 @@
                 {
                     "text": "Red",
                     "is_correct": true,
-                    "is_correct_text": "Red is a warm color"
+                    "correct_answer_text": "Red is a warm color"
                 },
                 {
                     "text": "Yellow",
                     "is_correct": true,
-                    "is_correct_text": "Yellow is a warm color"
+                    "correct_answer_text": "Yellow is a warm color"
                 },
                 {
                     "text": "Green",

@@ -11,12 +11,14 @@
             "type": "boolean"
           },
           "correct_answer_text": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1
           }
         },
         "required": ["text", "is_correct"],
         "if": {
-          "properties": { "is_correct": { "const": true } }
+          "properties": { "is_correct": {"const": true} },
+          "required": ["text", "is_correct"]
         },
         "then": {
           "required": ["correct_answer_text"]
