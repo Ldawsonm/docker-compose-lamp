@@ -1,0 +1,12 @@
+body {
+    background-color: #FFF7E6;
+    font-family: Calibri;
+}
+
+.adv_background{
+    position: absolute;
+    top: 0vh;
+    left: 0vw;
+    height: 100vh;
+    width: 100vw;
+}

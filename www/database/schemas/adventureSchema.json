@@ -1,0 +1,82 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+      "Option": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "is_correct": {
+            "type": "boolean"
+          },
+          "correct_answer_text": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": ["text", "is_correct"],
+        "if": {
+          "properties": { "is_correct": {"const": true} },
+          "required": ["text", "is_correct"]
+        },
+        "then": {
+          "required": ["correct_answer_text"]
+        }
+      },
+      "Prompt": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["FREE_RESPONSE", "FREE_SELECT", "MULTIPLE_CHOICE"]
+          },
+          "options": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/Option" }
+          }
+        },
+        "required": ["text", "type"],
+        "if": {
+          "properties": { "type": { "enum": ["FREE_SELECT", "MULTIPLE_CHOICE"] } }
+        },
+        "then": {
+          "required": ["options"]
+        }
+      },
+      "Slide": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "prompts": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/Prompt" }
+          }
+        },
+        "required": ["title", "content", "prompts"]
+      }
+    },
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "slides": {
+        "type": "array",
+        "items": { "$ref": "#/definitions/Slide" }
+      }
+    },
+    "required": ["name", "description", "slides"]
+  }
+  
