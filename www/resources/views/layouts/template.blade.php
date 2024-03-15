@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Application - @yield('title')</title>
+    <title>@yield('title') - {{ config('app.name', 'Laravel') }}</title>
 </head>
 <body>
     <header>
         <!-- Header content -->
+        
     </header>
 
     <main>

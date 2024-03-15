@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('responses', function (Blueprint $table) {
+        Schema::create('user_responses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('prompt_id')->constrained()->onDelete('cascade');
-            $table->foreignId('prompt_option_id')->constrained()->onDelete('cascade')->nullable();
+            $table->foreignId('prompt_option_id')->nullable()->constrained()->onDelete('cascade');
             $table->longText('text')->nullable();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('responses');
+        Schema::dropIfExists('user_responses');
     }
 };

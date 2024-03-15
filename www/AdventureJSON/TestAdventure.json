@@ -1,10 +1,10 @@
 {
-    "name": "Jungle Escape",
-    "description": "An adventurous escape from a dense jungle full of puzzles.",
+    "name": "Behavioral Principles",
+    "description": "ADVENTURE DESCRIPTION HERE",
     "slides": [
       {
-        "title": "Slide 1",
-        "content": "Introduction to the jungle",
+        "title": "Principles of Behavior: Understanding the Family Cycle",
+        "content": "resources/views/adventures/adventure1/slide1.html",
         "prompts": [
           {
             "text": "Are you ready to start?",
