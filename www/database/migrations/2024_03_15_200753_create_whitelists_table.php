@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('slides', function (Blueprint $table) {
+        Schema::create('whitelists', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('adventure_id')->constrained()->onDelete('cascade');
-            $table->string('title');
-            $table->longText('content');
-            $table->integer('order');
+            $table->string('email');
         });
-        
     }
 
     /**
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('slides');
+        Schema::dropIfExists('whitelists');
     }
 };

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->longText('text');
             $table->enum('type', ['FREE_RESPONSE', 'FREE_SELECT', 'MULTIPLE_CHOICE']);
             $table->integer('order');
-            $table->timestamps();
         });
     }
 
