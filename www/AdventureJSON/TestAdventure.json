@@ -76,6 +76,57 @@
             ]
           }
         ]
+      },
+      {
+        "title": "The ABCs of Behavior: Part 1",
+        "content": "resources/views/adventures/adventure1/slide2.html",
+        "prompts":[
+          {
+            "text": "What is the antecedent in this example: Mary hits Fred after he takes the toy she is playing with",
+            "type": "MULTIPLE_CHOICE",
+            "options":[
+              {
+                "text": "Mary Hits Fred",
+                "is_correct": false
+              },
+              {
+                "text": "Fred Takes Mary's Toy",
+                "is_correct": true,
+                "correct_answer_text": "The correct answer is: Fred takes Mary's toy."
+              }
+            ]
+          },
+          {
+            "text": "What is the behavior in this example: Mary hits Fred after he takes her toy, and the teacher tells Fred to give the toy back to her",
+            "type": "MULTIPLE_CHOICE",
+            "options": [
+              {
+                "text": "Mary gets her toy",
+                "is_correct": false
+              },
+              {
+                "text": "Mary hits Fred",
+                "is_correct":true,
+                "correct_answer_text": "The correct answer is: Mary hits Fred."
+              }
+            ]
+          },
+          {
+            "text": "What is the consequence in this example: After Mary hits Fred for taking her toy, the teacher tells Fred to give the toy back to her",
+            "type": "MULTIPLE_CHOICE",
+            "options": [
+              {
+                "text": "Mary gets her toy",
+                "is_correct": true,
+                "correct_answer_text": "The correct answer is: Mary gets her toy back."
+              },
+              {
+                "text": "Mary hits Fred",
+                "is_correct": false
+              }
+            ]
+          }
+        ]
       }
     ]
   }

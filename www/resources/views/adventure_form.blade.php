@@ -44,7 +44,8 @@
             @foreach ($prompt->promptOptions as $option)
                 <div>
                     <label>
-                        <input type="checkbox" name="responses[{{ $prompt->id }}][]" value="{{ $option->id }}" {{ $responses[$prompt->id]->contains('prompt_option_id', $option->id) ? 'checked' : '' }} />
+                        <input type="checkbox" name="responses[{{ $prompt->id }}][]" value="{{ $option->id }}" {{ (isset($responses[$prompt->id]) && $responses[$prompt->id]->contains('prompt_option_id', $option->id)) ? 'checked' : '' }} />
+
                         {{ $option->text }}
                     </label>
                 </div>

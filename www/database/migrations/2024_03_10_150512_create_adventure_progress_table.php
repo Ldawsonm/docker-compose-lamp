@@ -16,8 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('adventure_id')->contrained()->onDelete('cascade');
             $table->foreignId('slide_id')->constrained()->onDelete('cascade');
-            $table->boolean('is_completed')->default(false);
-            $table->timestamps();
+            $table->dateTime('unlock_time');
         });
     }
 

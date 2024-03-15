@@ -29,5 +29,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('testadminpassword'),
             'is_admin' => true
        ]);
+       
+       // Add adventure imports here
     }
 }
