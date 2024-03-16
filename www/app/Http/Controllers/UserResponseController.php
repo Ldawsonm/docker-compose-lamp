@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 use App\Models\Adventure;
 use App\Models\UserResponse;
+use App\Models\AdventureProgress;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 
 class UserResponseController extends Controller
@@ -24,6 +26,9 @@ class UserResponseController extends Controller
                                 ->get()
                                 ->groupBy('prompt_id'); // Key the responses by prompt_id for easy access
 
+        $existingProgress = AdventureProgress::where('user_id', $userId)
+                                ->where('adventure_id', $adventure->id)
+                                ->first();
         // Alternatively, if you want to handle multiple responses per prompt (like for free select),
         // you might want to group them by prompt_id instead
         // $responses = UserResponse::where('user_id', $userId)
@@ -33,7 +38,7 @@ class UserResponseController extends Controller
         //                          ->get()
         //                          ->groupBy('prompt_id');
 
-        return view('adventure_form', compact('adventure', 'responses'));
+        return view('adventure_form', compact('adventure', 'responses', 'existingProgress'));
     }
 
     public function submitForm(Request $request)
@@ -92,6 +97,25 @@ class UserResponseController extends Controller
                     ]);
                 }
             }
+        }
+
+        // Update User Progress in form
+        $progressPromptId = $request->input('progress_prompt_id');
+        Log::debug($progressPromptId);
+        $existingProgress = AdventureProgress::where('user_id', $userId)
+                                                ->where('adventure_id', $adventureId)
+                                                ->first();
+        if ($existingProgress) {
+            Log::debug('updating record with prompt_id' . $progressPromptId);
+            $existingProgress->update(['prompt_id'=> $progressPromptId]);
+        } else {
+            AdventureProgress::create([
+                'user_id' => $userId,
+                'prompt_id' => $progressPromptId,
+                'adventure_id' => $adventureId,
+                'unlock_time' => Carbon::now()
+            ]);
+
         }
 
         return redirect()->route('adventure.show', ['adventure' => $adventureId])->with('success', 'Responses have been updated.');

@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_adventures', function (Blueprint $table) {
+        Schema::create('adventure_progress', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->json('incomplete_adventures');
-            $table->json('complete_adventures');
-            $table->json('pending_adventures');
-            $table->json('locked_adventures');
-            $table->timestamps();
+            $table->foreignId('adventure_id')->contrained()->onDelete('cascade');
+            $table->foreignId('prompt_id')->constrained()->onDelete('cascade');
+            $table->dateTime('unlock_time');
         });
     }
 
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_adventures');
+        Schema::dropIfExists('adventure_progress');
     }
 };

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Adventure extends Model
 {
     protected $fillable = ['name', 'description'];
+    public $timestamps = false;
     use HasFactory;
 
     public function slides()
