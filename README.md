@@ -4,6 +4,8 @@
 - Get Docker: https://www.docker.com/products/docker-desktop/
 - (Optional) Get Github Desktop: https://desktop.github.com/
 
+## Workspace Initialization
+
 Step 1. Clone the repository. Navigate to a directory where you want the repository to be located (this directory will not have the repository directly, but the folder of the repository)
 `git clone https://github.com/Ldawsonm/docker-compose-lamp.git`
 Then navigate to the repository
