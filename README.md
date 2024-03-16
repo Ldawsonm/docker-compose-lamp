@@ -1,63 +1,45 @@
-# LAMP stack built with Docker Compose
-
-![Landing Page](https://user-images.githubusercontent.com/43859895/141092846-905eae39-0169-4fd7-911f-9ff32c48b7e8.png)
-
-A basic LAMP stack environment built using Docker Compose. It consists of the following:
-
-- PHP 8.3
-- Apache 2
-- MySQL 8
-- phpMyAdmin
-- Redis
 
 ## Development Environment (Local Desktop)
 
 - Get Docker: https://www.docker.com/products/docker-desktop/
 - (Optional) Get Github Desktop: https://desktop.github.com/
 
-### Dependency Management
+Step 1. Clone the repository. Navigate to a directory where you want the repository to be located (this directory will not have the repository directly, but the folder of the repository)
+`git clone https://github.com/Ldawsonm/docker-compose-lamp.git`
+Then navigate to the repository
+`cd docker-compose-lamp`
 
-#### Windows
+Step 2. Build the Docker Image
+`docker compose build` This will take a while, around about 8 minutes for me. If the build fails, run the command again and it should be good. If it persistently has issues building, let me know
 
-- Download PHP binaries zip file: https://windows.php.net/download/
-- Create a folder somewhere (e.g. C:\) and name it php
-- Extract the contents of the zip file into this folder (C:\php\)
-- Download Composer: https://getcomposer.org/download/
-- Run the installer, keeping in mind where the php binaries were installed
-- Once the installer is finished, restart your computer
+Step 3. Turn on the Docker Compose application
+`docker compose up -d`
 
-#### macOS
+Step 4. Open the Webserver's bash
+`docker compose exec webserver bash`
+The docker compose application has the webserver's service name as webserver, so that's why you put that in the command.
+This will open a bash session inside the webserver container, you'll be working in this bash session a lot, so be ready to use that command a lot to get into the container.
 
-- Install homebrew: https://brew.sh/
-- In the command line, run:
-```shell
-brew install php
-```
-- Follow command line instructions here: https://getcomposer.org/download/
+Step 5. Install dependencies
+There are a lot of dependencies for the laravel webapp, so understandably it is ignored in the git repository. Not to worry, we will install the dependency in the bash session of the webserver
+`composer install` this part takes a couple minutes.
+`npm install`
+`npm run build`
+At this point, the website should be working. You can access it from the web with the address *localhost*.
 
-#### Linux
+Step 6. Initialize Laravel database
+`php artisan migrate --seed` this will ask if it should create the support_branch_vt database. Say yes to this prompt with the arrow keys and the enter key.
+This command will seed two test users in the website, here are their credentials
+Test User:
+email: test@example.com
+password: testuserpassword
+Test Admin:
+email: testadmin@example.com
+password: testadminpassword
+*Note: We must remove these before we deploy*
 
-- In the command line, run:
-```shell
-sudo apt-get install php
-```
-- follow command line instructions here: https://getcomposer.org/download/
-
-## Installation
-
-- Clone this repository on your local computer
-- configure .env as needed
-- Run the `docker compose up -d`.
-
-```shell
-git clone https://github.com/sprintcube/docker-compose-lamp.git
-cd docker-compose-lamp/
-docker compose up -d
-// visit localhost
-```
-
-Your LAMP stack is now ready!! You can access it via `http://localhost`.
-
+Step 7. Import the test adventure
+`php artisan import:adventure AdventureJSON/TestAdventure.json`
 
 
 ## Configuration and Usage
