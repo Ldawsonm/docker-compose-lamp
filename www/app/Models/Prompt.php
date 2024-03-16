@@ -9,6 +9,7 @@ class Prompt extends Model
 {
     use HasFactory;
     protected $fillable = ['text', 'type', 'slide_id', 'order'];
+    public $timestamps = false;
     // Inside Prompt model
     public  function adventure()
     {

@@ -69,7 +69,7 @@ class ImportAdventureJson extends Command
         $slideIndex = 0;
         foreach ($adventureData->slides as $slideData) {
             $content = file_get_contents($slideData->content);
-            Log::info('Current working directory: ' . getcwd());
+            //Log::info('Current working directory: ' . getcwd());
             $slide = $adventure->slides()->create([
                 'title' => $slideData->title,
                 'content' => $content,

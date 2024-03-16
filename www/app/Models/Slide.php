@@ -10,6 +10,7 @@ class Slide extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'content', 'adventure_id', 'order'];
+    public $timestamps = false;
 
     public function adventure()
     {
